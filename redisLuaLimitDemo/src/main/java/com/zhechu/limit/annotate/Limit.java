@@ -19,7 +19,7 @@ public @interface Limit {
     String name() default "";
 
     /**
-     * key
+     * key，限流类型为请求 ip 时可为空
      */
     String key() default "";
 

@@ -15,7 +15,7 @@ public class LimiterController {
     private static final AtomicInteger ATOMIC_INTEGER_3 = new AtomicInteger();
 
     /**
-     *
+     * 自定义限流key，限制10秒请求3次
      * @return
      */
     @Limit(key = "limitTest", period = 10, count = 3)
@@ -25,6 +25,10 @@ public class LimiterController {
         return ATOMIC_INTEGER_1.incrementAndGet();
     }
 
+    /**
+     * 自定义限流key，限制10秒请求3次
+     * @return
+     */
     @Limit(key = "customer_limit_test", period = 10, count = 3, limitType = LimitType.CUSTOMER)
     @GetMapping("/limitTest2")
     public int testLimiter2() {
@@ -32,7 +36,11 @@ public class LimiterController {
         return ATOMIC_INTEGER_2.incrementAndGet();
     }
 
-    @Limit(key = "ip_limit_test", period = 10, count = 3, limitType = LimitType.IP)
+    /**
+     * 使用访问IP作为限流key，限制10秒请求3次
+     * @return
+     */
+    @Limit(period = 10, count = 3, limitType = LimitType.IP)
     @GetMapping("/limitTest3")
     public int testLimiter3() {
 
