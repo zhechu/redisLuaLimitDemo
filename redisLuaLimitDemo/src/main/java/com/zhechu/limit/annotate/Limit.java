@@ -4,6 +4,9 @@ import com.zhechu.limit.enums.LimitType;
 
 import java.lang.annotation.*;
 
+/**
+ * 限流注解
+ */
 @Target({ElementType.METHOD, ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 @Inherited

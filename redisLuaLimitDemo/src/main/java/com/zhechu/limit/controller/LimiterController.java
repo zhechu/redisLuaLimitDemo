@@ -14,6 +14,10 @@ public class LimiterController {
     private static final AtomicInteger ATOMIC_INTEGER_2 = new AtomicInteger();
     private static final AtomicInteger ATOMIC_INTEGER_3 = new AtomicInteger();
 
+    /**
+     *
+     * @return
+     */
     @Limit(key = "limitTest", period = 10, count = 3)
     @GetMapping("/limitTest1")
     public int testLimiter1() {

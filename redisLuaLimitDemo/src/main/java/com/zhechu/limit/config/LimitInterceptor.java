@@ -22,6 +22,9 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.Serializable;
 import java.lang.reflect.Method;
 
+/**
+ * 限流切面实现
+ */
 @Aspect
 @Configuration
 public class LimitInterceptor {
@@ -37,6 +40,11 @@ public class LimitInterceptor {
         this.limitRedisTemplate = limitRedisTemplate;
     }
 
+    /**
+     * 限流拦截
+     * @param pjp
+     * @return
+     */
     @Around("execution(public * *(..)) && @annotation(com.zhechu.limit.annotate.Limit)")
     public Object interceptor(ProceedingJoinPoint pjp) {
         MethodSignature signature = (MethodSignature) pjp.getSignature();
@@ -81,6 +89,10 @@ public class LimitInterceptor {
         }
     }
 
+    /**
+     * 构造限流脚本
+     * @return
+     */
     public String buildLuaScript() {
         StringBuilder lua = new StringBuilder();
         lua.append("local c");
