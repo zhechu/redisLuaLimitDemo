@@ -1,7 +1,7 @@
 package com.zhechu.limit.enums;
 
 /**
- * 限流注解
+ * 限流类型
  */
 public enum LimitType {
 

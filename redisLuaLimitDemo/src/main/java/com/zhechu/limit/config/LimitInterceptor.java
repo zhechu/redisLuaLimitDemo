@@ -97,7 +97,7 @@ public class LimitInterceptor {
         StringBuilder lua = new StringBuilder();
         lua.append("local c");
         lua.append("\nc = redis.call('get',KEYS[1])");
-        // 调用不超过最大值，则直接返回
+        // 超过阈值，则直接返回
         lua.append("\nif c and tonumber(c) > tonumber(ARGV[1]) then");
         lua.append("\nreturn c;");
         lua.append("\nend");
